@@ -22,7 +22,9 @@ class ProductDetailsScreen extends StatelessWidget {
       ),
 
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
               height: 200,
@@ -32,15 +34,44 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
 
             // product title
-            Text(productdtls.products![index].title ?? ""),
-            Text(productdtls.products![index].brand ?? ""),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  productdtls.products![index].title ?? "",
+                  style: TextStyle(
+                    fontSize: 19,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  productdtls.products![index].brand ?? "",
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
 
-            Text(productdtls.products![index].description ?? ""),
+            SizedBox(height: 30),
+
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Text(productdtls.products![index].description ?? ""),
+            ),
+
+            SizedBox(height: 50),
             Text(productdtls.products![index].warrantyInformation ?? ""),
-            Image.network(
-              height: 150,
-              width: 200,
-              productdtls.products![index].meta?.qrCode ?? "",
+            SizedBox(height: 50),
+            Center(
+              child: Image.network(
+                height: 150,
+                width: 200,
+                productdtls.products![index].meta?.qrCode ?? "",
+              ),
             ),
 
             SizedBox(height: 50),
